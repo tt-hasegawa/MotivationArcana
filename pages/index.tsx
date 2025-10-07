@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { ArcanaCard, GameScreen } from '../types/arcana'
 import { arcanaCards } from '../data/arcanaCards'
+import QRCode from 'qrcode'
 
 export default function Home() {
   const [currentScreen, setCurrentScreen] = useState<GameScreen>(GameScreen.TITLE)
@@ -9,6 +10,28 @@ export default function Home() {
   const [selectedCards, setSelectedCards] = useState<ArcanaCard[]>([])
   const [currentPair, setCurrentPair] = useState<ArcanaCard[]>([])
   const [roundCount, setRoundCount] = useState<number>(0)
+  const [qrCodeDataURL, setQrCodeDataURL] = useState<string>('')
+
+  useEffect(() => {
+    const generateQRCode = async () => {
+      try {
+        const appURL = 'https://tt-hasegawa.github.io/MotivationArcana/'
+        const qrCodeURL = await QRCode.toDataURL(appURL, {
+          width: 150,
+          margin: 1,
+          color: {
+            dark: '#333333',
+            light: '#FFFFFF'
+          }
+        })
+        setQrCodeDataURL(qrCodeURL)
+      } catch (error) {
+        console.error('QRコードの生成に失敗しました:', error)
+      }
+    }
+    
+    generateQRCode()
+  }, [])
 
   const getRandomUnusedCards = useCallback((count: number): ArcanaCard[] => {
     const availableIndices = arcanaCards
@@ -96,6 +119,36 @@ export default function Home() {
       }}>
         アルカナカードから5回選択して、あなたの内発的・外発的動機を測定します
       </p>
+      
+      {qrCodeDataURL && (
+        <div style={{ 
+          marginBottom: '2rem',
+          textAlign: 'center'
+        }}>
+          <p style={{
+            color: '#666',
+            fontSize: '0.9rem',
+            marginBottom: '0.5rem'
+          }}>
+            このアプリのURL
+          </p>
+          <img 
+            src={qrCodeDataURL} 
+            alt="アプリURL QRコード" 
+            style={{
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+            }}
+          />
+          <p style={{
+            color: '#888',
+            fontSize: '0.8rem',
+            marginTop: '0.5rem'
+          }}>
+            QRコードをスキャンしてアクセス
+          </p>
+        </div>
+      )}
       
       <button
         onClick={startGame}

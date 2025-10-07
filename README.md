@@ -4,6 +4,8 @@
 ## 概要
 このプロジェクトは、Next.jsで構築されたPWA（Progressive Web App）です。ユーザーが自分のモチベーションの源泉を探ることができる心理ゲームアプリケーションです。
 
+**アプリURL**: https://tt-hasegawa.github.io/MotivationArcana/
+
 ## 機能
 - 📱 PWA対応（オフライン動作、ホーム画面への追加可能）
 - 🎯 モチベーションカードのドロー機能
