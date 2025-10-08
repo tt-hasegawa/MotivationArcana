@@ -189,23 +189,5 @@ export const arcanaCards: ArcanaCard[] = [
     extrinsicPoint: 0,
     collectivePoint: 3,
     individualPoint: 1
-  },
-  {
-    no: 21,
-    title: '世界',
-    description: '完成と統合の到達点。すべてが調和した状態。',
-    intrinsicPoint: 9,
-    extrinsicPoint: 8,
-    collectivePoint: 8,
-    individualPoint: 8
-  },
-  {
-    no: 22,
-    title: '創造者',
-    description: '無から有を生み出す力。純粋な創造への情熱。',
-    intrinsicPoint: 10,
-    extrinsicPoint: 1,
-    collectivePoint: 2,
-    individualPoint: 10
   }
 ];
