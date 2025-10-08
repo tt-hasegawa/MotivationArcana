@@ -12,6 +12,7 @@ export default function Home() {
   const [currentPair, setCurrentPair] = useState<ArcanaCard[]>([])
   const [roundCount, setRoundCount] = useState<number>(0)
   const [qrCodeDataURL, setQrCodeDataURL] = useState<string>('')
+  const [animatingCardNo, setAnimatingCardNo] = useState<number | null>(null)
 
   useEffect(() => {
     const generateQRCode = async () => {
@@ -61,25 +62,34 @@ export default function Home() {
   }
 
   const selectCard = (card: ArcanaCard) => {
-    const newSelectedCards = [...selectedCards, card]
-    setSelectedCards(newSelectedCards)
+    // Start the animation
+    setAnimatingCardNo(card.no)
     
-    const newUsedIndices = new Set(usedCardIndices)
-    currentPair.forEach(pairCard => {
-      const index = arcanaCards.findIndex(c => c.no === pairCard.no)
-      newUsedIndices.add(index)
-    })
-    setUsedCardIndices(newUsedIndices)
-    
-    const newRoundCount = roundCount + 1
-    setRoundCount(newRoundCount)
-    
-    if (newRoundCount >= 5) {
-      setCurrentScreen(GameScreen.RESULT)
-    } else {
-      const nextPair = getRandomUnusedCards(2, newUsedIndices)
-      setCurrentPair(nextPair)
-    }
+    // Delay the game logic to allow animation to be visible
+    setTimeout(() => {
+      const newSelectedCards = [...selectedCards, card]
+      setSelectedCards(newSelectedCards)
+      
+      const newUsedIndices = new Set(usedCardIndices)
+      currentPair.forEach(pairCard => {
+        const index = arcanaCards.findIndex(c => c.no === pairCard.no)
+        newUsedIndices.add(index)
+      })
+      setUsedCardIndices(newUsedIndices)
+      
+      const newRoundCount = roundCount + 1
+      setRoundCount(newRoundCount)
+      
+      // Reset animation state
+      setAnimatingCardNo(null)
+      
+      if (newRoundCount >= 5) {
+        setCurrentScreen(GameScreen.RESULT)
+      } else {
+        const nextPair = getRandomUnusedCards(2, newUsedIndices)
+        setCurrentPair(nextPair)
+      }
+    }, 600) // 600ms delay to allow animation to be seen
   }
 
   const resetGame = () => {
@@ -250,31 +260,41 @@ export default function Home() {
         justifyContent: 'center',
         flexWrap: 'wrap'
       }}>
-        {currentPair.map((card) => (
-          <div
-            key={card.no}
-            onClick={() => selectCard(card)}
-            style={{
-              backgroundColor: '#f8f9fa',
-              border: '2px solid #e9ecef',
-              borderRadius: '15px',
-              padding: '1.5rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              width: '250px',
-              textAlign: 'center'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)'
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)'
-              e.currentTarget.style.borderColor = '#667eea'
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = 'none'
-              e.currentTarget.style.borderColor = '#e9ecef'
-            }}
-          >
+        {currentPair.map((card) => {
+          const isAnimating = animatingCardNo === card.no
+          return (
+            <div
+              key={card.no}
+              onClick={() => selectCard(card)}
+              style={{
+                backgroundColor: '#f8f9fa',
+                border: '2px solid #e9ecef',
+                borderRadius: '15px',
+                padding: '1.5rem',
+                cursor: 'pointer',
+                transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                width: '250px',
+                textAlign: 'center',
+                transform: isAnimating ? 'translateY(-20px) scale(1.05)' : 'translateY(0) scale(1)',
+                boxShadow: isAnimating ? '0 15px 35px rgba(102, 126, 234, 0.3)' : 'none',
+                borderColor: isAnimating ? '#667eea' : '#e9ecef',
+                zIndex: isAnimating ? 10 : 1
+              }}
+              onMouseOver={(e) => {
+                if (!isAnimating) {
+                  e.currentTarget.style.transform = 'translateY(-5px) scale(1)'
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)'
+                  e.currentTarget.style.borderColor = '#667eea'
+                }
+              }}
+              onMouseOut={(e) => {
+                if (!isAnimating) {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)'
+                  e.currentTarget.style.boxShadow = 'none'
+                  e.currentTarget.style.borderColor = '#e9ecef'
+                }
+              }}
+            >
             <h3 style={{
               color: '#333',
               fontSize: '1.4rem',
@@ -291,7 +311,7 @@ export default function Home() {
               {card.description}
             </p>
           </div>
-        ))}
+        )})}
       </div>
     </div>
   )
