@@ -34,10 +34,11 @@ export default function Home() {
     generateQRCode()
   }, [])
 
-  const getRandomUnusedCards = useCallback((count: number): ArcanaCard[] => {
+  const getRandomUnusedCards = useCallback((count: number, currentUsedIndices?: Set<number>): ArcanaCard[] => {
+    const usedIndices = currentUsedIndices || usedCardIndices
     const availableIndices = arcanaCards
       .map((_, index) => index)
-      .filter(index => !usedCardIndices.has(index))
+      .filter(index => !usedIndices.has(index))
     
     const selectedIndices: number[] = []
     while (selectedIndices.length < count && selectedIndices.length < availableIndices.length) {
@@ -76,7 +77,7 @@ export default function Home() {
     if (newRoundCount >= 5) {
       setCurrentScreen(GameScreen.RESULT)
     } else {
-      const nextPair = getRandomUnusedCards(2)
+      const nextPair = getRandomUnusedCards(2, newUsedIndices)
       setCurrentPair(nextPair)
     }
   }
