@@ -31,7 +31,7 @@ export const arcanaCards: ArcanaCard[] = [
   {
     no: 3,
     title: '承認欲求',
-    description: '上司からの高評価・好印象を得た',
+    description: '上司や同僚からの高評価・好印象を得た',
     intrinsicPoint: 0,
     extrinsicPoint: 3,
     collectivePoint: 1,
@@ -66,7 +66,7 @@ export const arcanaCards: ArcanaCard[] = [
   },
   {
     no: 7,
-    title: '業績',
+    title: '組織の業績',
     description: '組織全体の業績が上がり、賞与が増える',
     intrinsicPoint: 0,
     extrinsicPoint: 3,
@@ -84,12 +84,12 @@ export const arcanaCards: ArcanaCard[] = [
   },
   {
     no: 9,
-    title: 'プロジェクト栄誉',
-    description: 'プロジェクト成功で社内評価が上がる',
-    intrinsicPoint: 1,
-    extrinsicPoint: 3,
-    collectivePoint: 2,
-    individualPoint: 2
+    title: '自己決定',
+    description: '自分で決めた方針で仕事ができる',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 10,
@@ -138,7 +138,7 @@ export const arcanaCards: ArcanaCard[] = [
   },
   {
     no: 15,
-    title: '完成完遂',
+    title: '完成品',
     description: 'より良いアウトプットを出すこと自体が快感',
     intrinsicPoint: 3,
     extrinsicPoint: 0,
@@ -166,7 +166,7 @@ export const arcanaCards: ArcanaCard[] = [
   {
     no: 18,
     title: '理念共感',
-    description: '組織理念に共感して働いている',
+    description: '組織理念に共感して働ける',
     intrinsicPoint: 3,
     extrinsicPoint: 1,
     collectivePoint: 3,
@@ -185,6 +185,15 @@ export const arcanaCards: ArcanaCard[] = [
     no: 20,
     title: '助け合い',
     description: '困っている同僚を助けることに満足感を得る',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 3,
+    individualPoint: 1
+  },
+  {
+    no: 21,
+    title: 'サービス精神',
+    description: 'お客様の課題を解決することに満足感を得る',
     intrinsicPoint: 3,
     extrinsicPoint: 0,
     collectivePoint: 3,
