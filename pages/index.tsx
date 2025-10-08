@@ -100,6 +100,58 @@ export default function Home() {
     setRoundCount(0)
   }
 
+  const generateShareText = (diagnosis: DiagnosisArchetype, totalIntrinsic: number, totalExtrinsic: number, totalCollective: number, totalIndividual: number): string => {
+    return `私のモチベーション診断結果✨
+
+【${diagnosis.title}】
+${diagnosis.axisCharacteristics}
+
+内発的動機: ${totalIntrinsic}点
+外発的動機: ${totalExtrinsic}点
+集団的: ${totalCollective}点
+個人的: ${totalIndividual}点
+
+あなたもやってみませんか？
+#MotivationArcana`
+  }
+
+  const shareToTwitter = (shareText: string) => {
+    const appURL = 'https://tt-hasegawa.github.io/MotivationArcana/'
+    const twitterURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(appURL)}`
+    
+    if (typeof window !== 'undefined') {
+      window.open(twitterURL, '_blank')
+    }
+  }
+
+  const shareToLine = (shareText: string) => {
+    const appURL = 'https://tt-hasegawa.github.io/MotivationArcana/'
+    const lineURL = `https://line.me/R/msg/text/?${encodeURIComponent(shareText + '\n' + appURL)}`
+    
+    if (typeof window !== 'undefined') {
+      window.open(lineURL, '_blank')
+    }
+  }
+
+  const shareGeneral = (shareText: string) => {
+    const appURL = 'https://tt-hasegawa.github.io/MotivationArcana/'
+    
+    if (typeof window !== 'undefined' && navigator.share) {
+      navigator.share({
+        title: 'モチベーションアルカナ診断結果',
+        text: shareText,
+        url: appURL,
+      }).catch(console.error)
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(shareText + '\n' + appURL).then(() => {
+        alert('診断結果をクリップボードにコピーしました！')
+      }).catch(() => {
+        alert('シェア機能がサポートされていません。')
+      })
+    }
+  }
+
   const getDiagnosis = (intrinsic: number, extrinsic: number, collective: number, individual: number): DiagnosisArchetype => {
     // Determine motivation axis (内発 vs 外発 vs 中間)
     const motivationDiff = intrinsic - extrinsic
@@ -580,6 +632,114 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Share Section */}
+        <div style={{
+          marginBottom: '2rem',
+          textAlign: 'center'
+        }}>
+          <h3 style={{
+            color: '#333',
+            fontSize: '1.2rem',
+            marginBottom: '1rem',
+            fontWeight: 'bold'
+          }}>
+            結果をシェアする
+          </h3>
+          
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1rem',
+            flexWrap: 'wrap'
+          }}>
+            <button
+              onClick={() => shareToTwitter(generateShareText(diagnosis, totalIntrinsic, totalExtrinsic, totalCollective, totalIndividual))}
+              style={{
+                backgroundColor: '#1DA1F2',
+                color: 'white',
+                border: 'none',
+                padding: '0.8rem 1.5rem',
+                fontSize: '0.9rem',
+                borderRadius: '25px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(29, 161, 242, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(29, 161, 242, 0.4)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(29, 161, 242, 0.3)'
+              }}
+            >
+              <span style={{ fontSize: '1.1em' }}>🐦</span>
+              Twitter
+            </button>
+
+            <button
+              onClick={() => shareToLine(generateShareText(diagnosis, totalIntrinsic, totalExtrinsic, totalCollective, totalIndividual))}
+              style={{
+                backgroundColor: '#00B900',
+                color: 'white',
+                border: 'none',
+                padding: '0.8rem 1.5rem',
+                fontSize: '0.9rem',
+                borderRadius: '25px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(0, 185, 0, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 185, 0, 0.4)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 185, 0, 0.3)'
+              }}
+            >
+              <span style={{ fontSize: '1.1em' }}>💬</span>
+              LINE
+            </button>
+
+            <button
+              onClick={() => shareGeneral(generateShareText(diagnosis, totalIntrinsic, totalExtrinsic, totalCollective, totalIndividual))}
+              style={{
+                backgroundColor: '#6c757d',
+                color: 'white',
+                border: 'none',
+                padding: '0.8rem 1.5rem',
+                fontSize: '0.9rem',
+                borderRadius: '25px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(108, 117, 125, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(108, 117, 125, 0.4)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(108, 117, 125, 0.3)'
+              }}
+            >
+              <span style={{ fontSize: '1.1em' }}>📱</span>
+              その他
+            </button>
+          </div>
+        </div>
         
         <button
           onClick={resetGame}
