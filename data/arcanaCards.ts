@@ -3,192 +3,192 @@ import { ArcanaCard } from '../types/arcana';
 export const arcanaCards: ArcanaCard[] = [
   {
     no: 0,
-    title: '愚者',
-    description: '新しい可能性への第一歩。無限の潜在能力を秘めている。',
-    intrinsicPoint: 8,
-    extrinsicPoint: 2,
-    collectivePoint: 3,
-    individualPoint: 9
+    title: '無心',
+    description: '無欲無心、ストイックに任務を遂行する',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 1,
-    title: '魔術師',
-    description: '意志の力で現実を創造する。自分の能力を信じて行動する。',
-    intrinsicPoint: 9,
-    extrinsicPoint: 4,
-    collectivePoint: 4,
-    individualPoint: 8
+    title: '報酬',
+    description: '成果に応じてボーナスが支給される',
+    intrinsicPoint: 0,
+    extrinsicPoint: 3,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 2,
-    title: '女教皇',
-    description: '直感と知恵の源泉。内なる声に耳を傾ける。',
-    intrinsicPoint: 7,
+    title: '昇進',
+    description: '昇進を目指して努力し、昇進できた',
+    intrinsicPoint: 0,
     extrinsicPoint: 3,
-    collectivePoint: 6,
-    individualPoint: 7
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 3,
-    title: '女帝',
-    description: '創造性と豊穣の象徴。愛と美で世界を満たす。',
-    intrinsicPoint: 6,
-    extrinsicPoint: 5,
-    collectivePoint: 8,
-    individualPoint: 5
+    title: '承認欲求',
+    description: '上司からの高評価・好印象を得た',
+    intrinsicPoint: 0,
+    extrinsicPoint: 3,
+    collectivePoint: 1,
+    individualPoint: 3
   },
   {
     no: 4,
-    title: '皇帝',
-    description: '秩序と権威の体現。責任を持って導く力。',
-    intrinsicPoint: 4,
-    extrinsicPoint: 8,
-    collectivePoint: 9,
+    title: 'ノルマ達成',
+    description: 'ノルマを達成してインセンティブを得る',
+    intrinsicPoint: 0,
+    extrinsicPoint: 3,
+    collectivePoint: 0,
     individualPoint: 3
   },
   {
     no: 5,
-    title: '教皇',
-    description: '伝統と教えの継承者。他者を導く使命感。',
-    intrinsicPoint: 5,
-    extrinsicPoint: 7,
-    collectivePoint: 9,
-    individualPoint: 4
+    title: '失敗回避',
+    description: '失敗して評価が下がるのを避けたい',
+    intrinsicPoint: 0,
+    extrinsicPoint: 2,
+    collectivePoint: 0,
+    individualPoint: 2
   },
   {
     no: 6,
-    title: '恋人',
-    description: '愛と選択の調和。心のつながりを大切にする。',
-    intrinsicPoint: 8,
-    extrinsicPoint: 4,
-    collectivePoint: 7,
-    individualPoint: 6
+    title: 'チームMVP',
+    description: '組織内で自分のチームが表彰される',
+    intrinsicPoint: 0,
+    extrinsicPoint: 3,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 7,
-    title: '戦車',
-    description: '意志力と行動力の結集。目標に向かって突き進む。',
-    intrinsicPoint: 9,
-    extrinsicPoint: 6,
-    collectivePoint: 5,
-    individualPoint: 9
+    title: '業績',
+    description: '組織全体の業績が上がり、賞与が増える',
+    intrinsicPoint: 0,
+    extrinsicPoint: 3,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 8,
-    title: '力',
-    description: '内なる強さと優しさ。困難を乗り越える勇気。',
-    intrinsicPoint: 8,
-    extrinsicPoint: 3,
-    collectivePoint: 6,
-    individualPoint: 8
+    title: '感謝の輪',
+    description: '他部署や顧客から感謝されたい',
+    intrinsicPoint: 1,
+    extrinsicPoint: 2,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 9,
-    title: '隠者',
-    description: '内省と探求の旅。自分自身の真実を見つける。',
-    intrinsicPoint: 10,
-    extrinsicPoint: 1,
+    title: 'プロジェクト栄誉',
+    description: 'プロジェクト成功で社内評価が上がる',
+    intrinsicPoint: 1,
+    extrinsicPoint: 3,
     collectivePoint: 2,
-    individualPoint: 10
+    individualPoint: 2
   },
   {
     no: 10,
-    title: '運命の輪',
-    description: '変化とチャンスの到来。流れに身を任せる柔軟性。',
-    intrinsicPoint: 6,
-    extrinsicPoint: 6,
-    collectivePoint: 6,
-    individualPoint: 6
+    title: '経営関与',
+    description: '組織の経営に関与した仕事をする',
+    intrinsicPoint: 0,
+    extrinsicPoint: 3,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 11,
-    title: '正義',
-    description: '公正と均衡の追求。正しい判断を下す責任感。',
-    intrinsicPoint: 5,
-    extrinsicPoint: 8,
-    collectivePoint: 8,
-    individualPoint: 4
+    title: '好奇心',
+    description: '新しい技術を学ぶのが純粋に楽しい',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 12,
-    title: '吊された男',
-    description: '犠牲と忍耐の価値。新しい視点を得るための停止。',
-    intrinsicPoint: 7,
-    extrinsicPoint: 2,
-    collectivePoint: 5,
-    individualPoint: 7
+    title: '挑戦心',
+    description: '難しい課題を自力で解決したい',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 13,
-    title: '死神',
-    description: '終わりと始まりの循環。変容を受け入れる覚悟。',
-    intrinsicPoint: 6,
-    extrinsicPoint: 3,
-    collectivePoint: 4,
-    individualPoint: 8
+    title: '向上心',
+    description: '自分のスキルを磨くことに喜びを感じる',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 14,
-    title: '節制',
-    description: '調和とバランスの技術。対立するものの統合。',
-    intrinsicPoint: 7,
-    extrinsicPoint: 5,
-    collectivePoint: 7,
-    individualPoint: 6
+    title: '自己拡張',
+    description: '仕事を通じて自分の可能性を広げたい',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 15,
-    title: '悪魔',
-    description: '欲望と束縛からの解放。自分の影と向き合う勇気。',
-    intrinsicPoint: 4,
-    extrinsicPoint: 9,
-    collectivePoint: 3,
-    individualPoint: 7
+    title: '完成完遂',
+    description: 'より良いアウトプットを出すこと自体が快感',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 0,
+    individualPoint: 3
   },
   {
     no: 16,
-    title: '塔',
-    description: '既存の枠組みの破壊。真の基盤を築くための変革。',
-    intrinsicPoint: 8,
-    extrinsicPoint: 2,
+    title: '一体感',
+    description: 'チームの一体感を感じることが嬉しい',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
     collectivePoint: 3,
-    individualPoint: 9
+    individualPoint: 1
   },
   {
     no: 17,
-    title: '星',
-    description: '希望と導きの光。未来への信頼と楽観性。',
-    intrinsicPoint: 9,
-    extrinsicPoint: 3,
-    collectivePoint: 6,
-    individualPoint: 8
+    title: '育成支援',
+    description: '同僚の成長を支援するのが楽しい',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 18,
-    title: '月',
-    description: '無意識と幻想の世界。直感を信じて進む道。',
-    intrinsicPoint: 8,
-    extrinsicPoint: 2,
-    collectivePoint: 4,
-    individualPoint: 9
+    title: '理念共感',
+    description: '組織理念に共感して働いている',
+    intrinsicPoint: 3,
+    extrinsicPoint: 1,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 19,
-    title: '太陽',
-    description: '生命力と成功の象徴。純粋な喜びと達成感。',
-    intrinsicPoint: 10,
-    extrinsicPoint: 7,
-    collectivePoint: 8,
-    individualPoint: 7
+    title: '社会貢献',
+    description: '社会に役立つプロジェクトにやりがいを感じる',
+    intrinsicPoint: 3,
+    extrinsicPoint: 1,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 20,
-    title: '審判',
-    description: '覚醒と復活の時。過去を超越した新しい自分。',
-    intrinsicPoint: 7,
-    extrinsicPoint: 6,
-    collectivePoint: 7,
-    individualPoint: 6
+    title: '助け合い',
+    description: '困っている同僚を助けることに満足感を得る',
+    intrinsicPoint: 3,
+    extrinsicPoint: 0,
+    collectivePoint: 3,
+    individualPoint: 1
   },
   {
     no: 21,
