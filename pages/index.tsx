@@ -351,6 +351,88 @@ export default function Home() {
           診断結果
         </h2>
         
+        {/* Diagnosis Section */}
+        <div style={{
+          backgroundColor: '#f8f9fa',
+          borderRadius: '15px',
+          padding: '2rem',
+          marginBottom: '2rem',
+          textAlign: 'left'
+        }}>
+          <h3 style={{
+            color: '#667eea',
+            fontSize: '1.4rem',
+            marginBottom: '1rem',
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+            あなたのモチベーション診断
+          </h3>
+          
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '10px',
+            padding: '1.5rem',
+            marginBottom: '1rem',
+            border: '2px solid #667eea'
+          }}>
+            <h4 style={{
+              color: '#333',
+              fontSize: '1.2rem',
+              marginBottom: '0.5rem',
+              fontWeight: 'bold'
+            }}>
+              {diagnosis.title}
+            </h4>
+            <p style={{
+              color: '#666',
+              fontSize: '0.9rem',
+              marginBottom: '0.5rem',
+              fontStyle: 'italic'
+            }}>
+              軸の特徴: {diagnosis.axisCharacteristics}
+            </p>
+          </div>
+
+          <div style={{
+            marginBottom: '1rem'
+          }}>
+            <h5 style={{
+              color: '#333',
+              fontSize: '1rem',
+              marginBottom: '0.5rem',
+              fontWeight: 'bold'
+            }}>
+              状態の解説
+            </h5>
+            <p style={{
+              color: '#666',
+              fontSize: '0.9rem',
+              lineHeight: '1.5'
+            }}>
+              {diagnosis.explanation}
+            </p>
+          </div>
+
+          <div>
+            <h5 style={{
+              color: '#333',
+              fontSize: '1rem',
+              marginBottom: '0.5rem',
+              fontWeight: 'bold'
+            }}>
+              職場での典型例
+            </h5>
+            <p style={{
+              color: '#666',
+              fontSize: '0.9rem',
+              lineHeight: '1.5'
+            }}>
+              {diagnosis.typicalExamples}
+            </p>
+          </div>
+        </div>
+
         <div style={{
           backgroundColor: '#f8f9fa',
           borderRadius: '15px',
@@ -495,88 +577,6 @@ export default function Home() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Diagnosis Section */}
-        <div style={{
-          backgroundColor: '#f8f9fa',
-          borderRadius: '15px',
-          padding: '2rem',
-          marginBottom: '2rem',
-          textAlign: 'left'
-        }}>
-          <h3 style={{
-            color: '#667eea',
-            fontSize: '1.4rem',
-            marginBottom: '1rem',
-            textAlign: 'center',
-            fontWeight: 'bold'
-          }}>
-            あなたのモチベーション診断
-          </h3>
-          
-          <div style={{
-            backgroundColor: 'white',
-            borderRadius: '10px',
-            padding: '1.5rem',
-            marginBottom: '1rem',
-            border: '2px solid #667eea'
-          }}>
-            <h4 style={{
-              color: '#333',
-              fontSize: '1.2rem',
-              marginBottom: '0.5rem',
-              fontWeight: 'bold'
-            }}>
-              {diagnosis.title}
-            </h4>
-            <p style={{
-              color: '#666',
-              fontSize: '0.9rem',
-              marginBottom: '0.5rem',
-              fontStyle: 'italic'
-            }}>
-              軸の特徴: {diagnosis.axisCharacteristics}
-            </p>
-          </div>
-
-          <div style={{
-            marginBottom: '1rem'
-          }}>
-            <h5 style={{
-              color: '#333',
-              fontSize: '1rem',
-              marginBottom: '0.5rem',
-              fontWeight: 'bold'
-            }}>
-              状態の解説
-            </h5>
-            <p style={{
-              color: '#666',
-              fontSize: '0.9rem',
-              lineHeight: '1.5'
-            }}>
-              {diagnosis.explanation}
-            </p>
-          </div>
-
-          <div>
-            <h5 style={{
-              color: '#333',
-              fontSize: '1rem',
-              marginBottom: '0.5rem',
-              fontWeight: 'bold'
-            }}>
-              職場での典型例
-            </h5>
-            <p style={{
-              color: '#666',
-              fontSize: '0.9rem',
-              lineHeight: '1.5'
-            }}>
-              {diagnosis.typicalExamples}
-            </p>
           </div>
         </div>
 
