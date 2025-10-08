@@ -1,6 +1,7 @@
 export interface ArcanaCard {
   no: number;
   title: string;
+  englishSubtitle: string;
   description: string;
   intrinsicPoint: number;
   extrinsicPoint: number;
