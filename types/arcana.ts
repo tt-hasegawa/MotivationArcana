@@ -4,6 +4,8 @@ export interface ArcanaCard {
   description: string;
   intrinsicPoint: number;
   extrinsicPoint: number;
+  collectivePoint: number;
+  individualPoint: number;
 }
 
 export enum GameScreen {

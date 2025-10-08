@@ -253,6 +253,8 @@ export default function Home() {
   const renderResultScreen = () => {
     const totalIntrinsic = selectedCards.reduce((sum, card) => sum + card.intrinsicPoint, 0)
     const totalExtrinsic = selectedCards.reduce((sum, card) => sum + card.extrinsicPoint, 0)
+    const totalCollective = selectedCards.reduce((sum, card) => sum + card.collectivePoint, 0)
+    const totalIndividual = selectedCards.reduce((sum, card) => sum + card.individualPoint, 0)
     
     return (
       <div style={{
@@ -278,37 +280,84 @@ export default function Home() {
           padding: '2rem',
           marginBottom: '2rem'
         }}>
-          <div style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{
-              color: '#667eea',
-              fontSize: '1.3rem',
-              marginBottom: '0.5rem'
-            }}>
-              内発的動機ポイント
-            </h3>
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: '#333'
-            }}>
-              {totalIntrinsic}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '1.5rem',
+            marginBottom: '1.5rem'
+          }}>
+            <div>
+              <h3 style={{
+                color: '#667eea',
+                fontSize: '1.2rem',
+                marginBottom: '0.5rem'
+              }}>
+                内発的動機ポイント
+              </h3>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 'bold',
+                color: '#333'
+              }}>
+                {totalIntrinsic}
+              </div>
+            </div>
+            
+            <div>
+              <h3 style={{
+                color: '#764ba2',
+                fontSize: '1.2rem',
+                marginBottom: '0.5rem'
+              }}>
+                外発的動機ポイント
+              </h3>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 'bold',
+                color: '#333'
+              }}>
+                {totalExtrinsic}
+              </div>
             </div>
           </div>
           
-          <div>
-            <h3 style={{
-              color: '#764ba2',
-              fontSize: '1.3rem',
-              marginBottom: '0.5rem'
-            }}>
-              外発的動機ポイント
-            </h3>
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: '#333'
-            }}>
-              {totalExtrinsic}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '1.5rem'
+          }}>
+            <div>
+              <h3 style={{
+                color: '#28a745',
+                fontSize: '1.2rem',
+                marginBottom: '0.5rem'
+              }}>
+                集団的ポイント
+              </h3>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 'bold',
+                color: '#333'
+              }}>
+                {totalCollective}
+              </div>
+            </div>
+            
+            <div>
+              <h3 style={{
+                color: '#dc3545',
+                fontSize: '1.2rem',
+                marginBottom: '0.5rem'
+              }}>
+                個人的ポイント
+              </h3>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 'bold',
+                color: '#333'
+              }}>
+                {totalIndividual}
+              </div>
             </div>
           </div>
         </div>
