@@ -298,11 +298,20 @@ export default function Home() {
             <h3 style={{
               color: '#333',
               fontSize: '1.4rem',
-              marginBottom: '1rem',
+              marginBottom: '0.5rem',
               fontWeight: 'bold'
             }}>
               {card.title}
             </h3>
+            <p style={{
+              color: '#667eea',
+              fontSize: '0.9rem',
+              marginBottom: '1rem',
+              fontStyle: 'italic',
+              fontWeight: '500'
+            }}>
+              {card.englishSubtitle}
+            </p>
             <p style={{
               color: '#666',
               fontSize: '0.95rem',
@@ -427,6 +436,65 @@ export default function Home() {
                 {totalIndividual}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Selected Cards Section */}
+        <div style={{
+          backgroundColor: '#f8f9fa',
+          borderRadius: '15px',
+          padding: '2rem',
+          marginBottom: '2rem',
+          textAlign: 'left'
+        }}>
+          <h3 style={{
+            color: '#667eea',
+            fontSize: '1.4rem',
+            marginBottom: '1rem',
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+            選択したカード
+          </h3>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1rem'
+          }}>
+            {selectedCards.map((card, index) => (
+              <div key={card.no} style={{
+                backgroundColor: 'white',
+                borderRadius: '10px',
+                padding: '1rem',
+                border: '1px solid #e9ecef'
+              }}>
+                <h4 style={{
+                  color: '#333',
+                  fontSize: '1.1rem',
+                  marginBottom: '0.25rem',
+                  fontWeight: 'bold'
+                }}>
+                  {card.title}
+                </h4>
+                <p style={{
+                  color: '#667eea',
+                  fontSize: '0.85rem',
+                  marginBottom: '0.5rem',
+                  fontStyle: 'italic',
+                  fontWeight: '500'
+                }}>
+                  {card.englishSubtitle}
+                </p>
+                <p style={{
+                  color: '#666',
+                  fontSize: '0.8rem',
+                  lineHeight: '1.4'
+                }}>
+                  {card.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
