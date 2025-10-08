@@ -13,3 +13,11 @@ export enum GameScreen {
   SELECTION = 'selection',
   RESULT = 'result'
 }
+
+export interface DiagnosisArchetype {
+  id: number;
+  title: string;
+  axisCharacteristics: string;
+  explanation: string;
+  typicalExamples: string;
+}

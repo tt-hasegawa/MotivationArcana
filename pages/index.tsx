@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { useState, useCallback, useEffect } from 'react'
-import { ArcanaCard, GameScreen } from '../types/arcana'
+import { ArcanaCard, GameScreen, DiagnosisArchetype } from '../types/arcana'
 import { arcanaCards } from '../data/arcanaCards'
+import { diagnosisArchetypes } from '../data/diagnosisArchetypes'
 import QRCode from 'qrcode'
 
 export default function Home() {
@@ -86,6 +87,50 @@ export default function Home() {
     setSelectedCards([])
     setCurrentPair([])
     setRoundCount(0)
+  }
+
+  const getDiagnosis = (intrinsic: number, extrinsic: number, collective: number, individual: number): DiagnosisArchetype => {
+    // Determine motivation axis (内発 vs 外発 vs 中間)
+    const motivationDiff = intrinsic - extrinsic
+    let motivationAxis: 'intrinsic' | 'extrinsic' | 'middle'
+    
+    if (motivationDiff > 2) {
+      motivationAxis = 'intrinsic'
+    } else if (motivationDiff < -2) {
+      motivationAxis = 'extrinsic'
+    } else {
+      motivationAxis = 'middle'
+    }
+
+    // Determine focus axis (個人 vs 集団 vs 中間)
+    const focusDiff = individual - collective
+    let focusAxis: 'individual' | 'collective' | 'middle'
+    
+    if (focusDiff > 2) {
+      focusAxis = 'individual'
+    } else if (focusDiff < -2) {
+      focusAxis = 'collective'
+    } else {
+      focusAxis = 'middle'
+    }
+
+    // Map to archetype ID based on 3x3 grid
+    const archetypeMap: { [key: string]: number } = {
+      'extrinsic_individual': 1,   // 外発 × 個人
+      'extrinsic_middle': 2,       // 外発 × 個人＝集団中間
+      'extrinsic_collective': 3,   // 外発 × 集団
+      'middle_individual': 4,      // 内発＝外発中間 × 個人
+      'middle_middle': 5,          // 内発＝外発中間 × 個人＝集団中間
+      'middle_collective': 6,      // 内発＝外発中間 × 集団
+      'intrinsic_individual': 7,   // 内発 × 個人
+      'intrinsic_middle': 8,       // 内発 × 個人＝集団中間
+      'intrinsic_collective': 9    // 内発 × 集団
+    }
+
+    const key = `${motivationAxis}_${focusAxis}`
+    const archetypeId = archetypeMap[key] || 5 // Default to balanced type
+    
+    return diagnosisArchetypes.find(archetype => archetype.id === archetypeId) || diagnosisArchetypes[4]
   }
 
   const renderTitleScreen = () => (
@@ -256,6 +301,8 @@ export default function Home() {
     const totalCollective = selectedCards.reduce((sum, card) => sum + card.collectivePoint, 0)
     const totalIndividual = selectedCards.reduce((sum, card) => sum + card.individualPoint, 0)
     
+    const diagnosis = getDiagnosis(totalIntrinsic, totalExtrinsic, totalCollective, totalIndividual)
+    
     return (
       <div style={{
         textAlign: 'center',
@@ -263,7 +310,7 @@ export default function Home() {
         padding: '3rem',
         borderRadius: '20px',
         boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-        maxWidth: '500px',
+        maxWidth: '600px',
         width: '100%'
       }}>
         <h2 style={{ 
@@ -271,7 +318,7 @@ export default function Home() {
           marginBottom: '2rem',
           fontSize: '2rem'
         }}>
-          結果
+          診断結果
         </h2>
         
         <div style={{
@@ -359,6 +406,88 @@ export default function Home() {
                 {totalIndividual}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Diagnosis Section */}
+        <div style={{
+          backgroundColor: '#f8f9fa',
+          borderRadius: '15px',
+          padding: '2rem',
+          marginBottom: '2rem',
+          textAlign: 'left'
+        }}>
+          <h3 style={{
+            color: '#667eea',
+            fontSize: '1.4rem',
+            marginBottom: '1rem',
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+            あなたのモチベーション診断
+          </h3>
+          
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '10px',
+            padding: '1.5rem',
+            marginBottom: '1rem',
+            border: '2px solid #667eea'
+          }}>
+            <h4 style={{
+              color: '#333',
+              fontSize: '1.2rem',
+              marginBottom: '0.5rem',
+              fontWeight: 'bold'
+            }}>
+              {diagnosis.title}
+            </h4>
+            <p style={{
+              color: '#666',
+              fontSize: '0.9rem',
+              marginBottom: '0.5rem',
+              fontStyle: 'italic'
+            }}>
+              軸の特徴: {diagnosis.axisCharacteristics}
+            </p>
+          </div>
+
+          <div style={{
+            marginBottom: '1rem'
+          }}>
+            <h5 style={{
+              color: '#333',
+              fontSize: '1rem',
+              marginBottom: '0.5rem',
+              fontWeight: 'bold'
+            }}>
+              状態の解説
+            </h5>
+            <p style={{
+              color: '#666',
+              fontSize: '0.9rem',
+              lineHeight: '1.5'
+            }}>
+              {diagnosis.explanation}
+            </p>
+          </div>
+
+          <div>
+            <h5 style={{
+              color: '#333',
+              fontSize: '1rem',
+              marginBottom: '0.5rem',
+              fontWeight: 'bold'
+            }}>
+              職場での典型例
+            </h5>
+            <p style={{
+              color: '#666',
+              fontSize: '0.9rem',
+              lineHeight: '1.5'
+            }}>
+              {diagnosis.typicalExamples}
+            </p>
           </div>
         </div>
 
