@@ -101,9 +101,11 @@ export default function Home() {
       <h1 style={{ 
         color: '#333', 
         marginBottom: '1rem',
-        fontSize: '2.5rem'
+        fontSize: '2.5rem',
+        fontFamily: 'Cinzel, serif',
+        fontWeight: '600'
       }}>
-        モチベーションアルカナ
+        Motivation Arcana
       </h1>
       <p style={{ 
         color: '#666', 
@@ -112,17 +114,36 @@ export default function Home() {
       }}>
         あなたの心の奥にある動機の源泉を発見しましょう
       </p>
-      <p style={{ 
-        color: '#666', 
-        marginBottom: '2rem',
-        fontSize: '1rem'
-      }}>
-        アルカナカードから5回選択して、あなたの内発的・外発的動機を測定します
-      </p>
+
+      
+      <button
+        onClick={startGame}
+        style={{
+          backgroundColor: '#764ba2',
+          color: 'white',
+          border: 'none',
+          padding: '1rem 2rem',
+          fontSize: '1.1rem',
+          borderRadius: '50px',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+          boxShadow: '0 4px 15px rgba(118, 75, 162, 0.3)'
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)'
+          e.currentTarget.style.boxShadow = '0 6px 20px rgba(118, 75, 162, 0.4)'
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)'
+          e.currentTarget.style.boxShadow = '0 4px 15px rgba(118, 75, 162, 0.3)'
+        }}
+      >
+        ゲームスタート
+      </button>
       
       {qrCodeDataURL && (
         <div style={{ 
-          marginBottom: '2rem',
+          marginTop: '2rem',
           textAlign: 'center'
         }}>
           <p style={{
@@ -149,31 +170,6 @@ export default function Home() {
           </p>
         </div>
       )}
-      
-      <button
-        onClick={startGame}
-        style={{
-          backgroundColor: '#764ba2',
-          color: 'white',
-          border: 'none',
-          padding: '1rem 2rem',
-          fontSize: '1.1rem',
-          borderRadius: '50px',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease',
-          boxShadow: '0 4px 15px rgba(118, 75, 162, 0.3)'
-        }}
-        onMouseOver={(e) => {
-          e.currentTarget.style.transform = 'translateY(-2px)'
-          e.currentTarget.style.boxShadow = '0 6px 20px rgba(118, 75, 162, 0.4)'
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)'
-          e.currentTarget.style.boxShadow = '0 4px 15px rgba(118, 75, 162, 0.3)'
-        }}
-      >
-        ゲームスタート
-      </button>
     </div>
   )
 
@@ -316,16 +312,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
-        <p style={{
-          color: '#666',
-          marginBottom: '2rem',
-          fontSize: '0.95rem',
-          lineHeight: '1.5'
-        }}>
-          内発的動機が高い場合、あなたは自分自身の興味や満足感を重視します。<br />
-          外発的動機が高い場合、あなたは外部からの評価や報酬を重視します。
-        </p>
+
         
         <button
           onClick={resetGame}
